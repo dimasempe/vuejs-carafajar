@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index VueJS</title>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+</head>
+<body>
+    
+    <div id="app">
+        <div>
+            <button @click="kurang()">-</button>
+            {{ count }}
+            <button @click="tambah()">+</button>
+        </div>
+        <div>
+            {{ message }} <!-- ini pakai kumis moustache  -->
+        </div>
+        <div v-text="message"></div> <!-- ini pakai direktiv v-text (tapi akan mereplace
+             isi tag nya) di JQuery kayak function text  -->
+        <div v-html="message3"></div> <!-- ini bisa pake html ukan text doang  -->
+    </div>
+    <script type="module">
+        // const {createApp} = Vue
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return{
+                    count:0,
+                    message: 'Haloo Dimsskuyy',
+                    message3: '<strong>ini tulisan bold</strong>'
+                }
+            },
+            methods: {
+                tambah(){
+                    this.count++
+                },
+                kurang(){
+                    this.count--
+                }
+            }
+        }).mount('#app')
+    </script>
+    
+</body>
+</html>

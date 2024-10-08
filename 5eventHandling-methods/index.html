@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- inline tanpa method -->
+        <button v-on:click="count--">-</button>
+        <span>{{ count }}</span>
+        <button v-on:click="count++">+</button>
+        <br>
+        <!-- inline tanpa method (pakai shorthand)-->
+        <button @click="count--">-</button>
+        <span>{{ count }}</span>
+        <button @click="count++">+</button>
+        <br>
+        <!-- pakai method (pakai shorthand)-->
+        <button @click="mengurangi()">-</button>
+        <span>{{ count }}</span>
+        <button @click="menambah()">+</button>
+
+        <br>
+        <!-- pakai method (pakai shorthand)-->
+        <button @click="mengurangi()">-</button>
+        <span>{{ count }}</span>
+        <button @click="menambah()">+</button>
+        <br>
+        <button @click="sayHello('Halo ini dimas :D')">say haloo</button>
+        <br>
+        <input type="text" v-on:keydown.enter="sayHello('mencet enter keydown lu ya')">
+        <input type="text" @keyup.enter="sayHello('mencet enter keyup lu ya')">
+        <br>
+        <form method="post" action="whatever.html" v-on:submit.prevent> <!-- ini biar ga ke refresh halamannya-->
+            <input type="text">
+            <input type="submit" value="send">
+            <!-- <button type="submit">Submit</button> -->
+        </form>
+
+
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return{
+                    count:0
+                }
+            },
+            methods:{
+                mengurangi(){
+                    this.count--
+                },
+                menambah(){
+                    this.count++
+                },
+                sayHello(isi){
+                    alert(isi)
+                }
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

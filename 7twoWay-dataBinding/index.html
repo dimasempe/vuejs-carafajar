@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label for="">Username: </label><br>
+            <input type="text" placeholder='username' v-model="username">
+        </div>
+
+        <div>
+            <label for="">Address:</label><br>
+            <textarea name="" id="" cols="30" rows="10" v-model="address"></textarea>
+        </div>
+
+        <div>
+            <p>Username: {{ username }}</p>
+        </div>
+        <div>
+            <p>Address: {{ address }}</p>
+        </div>
+
+        <div>
+            <label for="">Gender</label>
+            <input type="radio" value="Pria" v-model="gender">Pria
+            <input type="radio" value="Wanita" v-model="gender">Wanita
+        </div>
+
+        <div>
+            <p>Gender: {{ gender }}</p>
+        </div>
+
+        <div>
+            <label for="">Hoby</label><br>
+            <input type="checkbox" value="Sepak bola" v-model="hobi">Sepak Bola
+            <input type="checkbox" value="Volly" v-model="hobi">Volly
+            <input type="checkbox" value="Badminton" v-model="hobi">Badminton
+        </div>
+        <div>
+            <p>Hobi: {{ hobi.join(', ') }}</p>
+        </div>
+
+        <div>
+            <label for="">Role: </label>
+            <select name="role" id="role" v-model="role">
+                <option disabled value="">Pilih Satu</option>
+                <option value="Staff">Staff</option>
+                <option value="Finance">Finance</option>
+                <option value="Editor">Editor</option>
+            </select>
+        </div>
+
+        <div>
+            <p>Role: {{ rolezs3 }}</p>
+        </div>
+
+        
+
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return{
+                    username:"",
+                    address: '',
+                    gender:'',
+                    hobi: [],
+                    role:'' 
+                }
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>

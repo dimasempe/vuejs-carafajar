@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="tampil">  <!-- bisa di tag apa aja -->
+            {{ message }}
+        </div>
+        <span v-else>
+            message tidak ditampilkan
+        </span>
+
+        <div v-if="nilai > 8">
+            Predikat A
+        </div>
+        <div v-else-if="nilai <= 8 && nilai > 6">
+            Predikat B
+        </div>
+        <div v-else>
+            Predikat C
+        </div>
+
+        <div v-show="stateLampu"> <!--v-comment ini bisa keliatan di console, 
+            karena yg diubah hanya css -->
+            Lampu Hidup
+        </div>
+        <button @click="toggleLampu()">Pencet Saklar</button>
+
+    </div>
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return{
+                    message: 'Halo dimss',
+                    tampil: true, //klo false muncul yang v-else
+                    nilai: 3,
+                    stateLampu: true
+                }
+            },
+            methods:{
+                toggleLampu(){
+                    this.stateLampu = !this.stateLampu
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

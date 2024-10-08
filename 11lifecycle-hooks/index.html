@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- contoh untuk mount tampil -->
+        <!-- ref="inputan" gunanya untuk mengisi DOM -->
+        <input type="text" value="ini isinya" ref="inputan">
+        <br><br>
+        <input type="text" :value="count" ref="hitungan">
+
+        <button @click="count++">Add</button>
+    </div>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data(){
+                return{
+                    message: 'hello world',
+                    count:0
+                }
+            },
+            beforeCreate(){ //belum kenal inisialisasi
+                //kalian melakukan logic gak akan bisa karena belum dikenalin
+                console.log(`before create: ${this.message}`) //before create: undefine
+            },
+            created(){ //sudah kenal inisialisasi
+                //ini baru melakukan logic
+                console.log(`created: ${this.message}`) //created: hello world
+            },
+            beforeMount(){ //belum kenal isi DOM
+                console.log(`before mount: ${this.$refs.inputan}`)
+            },
+            mounted(){ //sudah kenal isi DOM
+                console.log(`mount: ${this.$refs.inputan}`)
+            },
+            beforeUpdate(){
+                console.log(`before update: ${this.$refs.hitungan.value}`) //keluarnya masih 0
+                // kirim email notif bahwa nilai dari count sebelum diubah adalah berapa
+            },
+            updated(){
+                console.log(`updated: ${this.$refs.hitungan.value}`) //keluarnya sudah 1
+                // kirim email notif bahwa nilai dari count setelah diubah adalah berapa
+            }
+            // kalau menggunakan componen baru pake befoeUnmount dan unmounted
+
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>
